@@ -10,13 +10,12 @@ const cart = () => {
     localStorage.removeItem("cart");
     modalCart.classList.remove("is-open");
   };
-  /*функции для кнопок
-удаления и добавления товара в корзине*/
+ 
   const incrementCount = (id) => {
     const cartArray = JSON.parse(localStorage.getItem("cart"));
 
     cartArray.map((item) => {
-      /*пишем условие чтобы id совпадоло с идентифкатором  item*/
+  
       if (item.id === id) {
         item.count++;
       }
@@ -29,21 +28,17 @@ const cart = () => {
     const cartArray = JSON.parse(localStorage.getItem("cart"));
 
     cartArray.map((item) => {
-      /*пишем условие чтобы id совпадоло с идентифкатором  item*/
+      
       if (item.id === id) {
         item.count = item.count > 0 ? item.count - 1 : 0;
-        // if(item.count > 0) {
-        //     item.count--;
-        // } else {
-        //     item.count = 0
-        // }
+        
       }
       return item;
     });
     localStorage.setItem("cart", JSON.stringify(cartArray));
     renderItems(cartArray);
   };
-  /*опишем функцию, которая будет получать дату*/
+  
   const renderItems = (data) => {
     modalBody.innerHTML = "";
     data.forEach((cartItem) => {
@@ -74,7 +69,7 @@ const cart = () => {
     }
   });
 
-  //https://jsonplaceholder.typicode.com/posts
+  
   btnMakingOrder.addEventListener("click", () => {
     const cartArray = localStorage.getItem("cart");
 
@@ -104,6 +99,6 @@ const cart = () => {
       modalCart.classList.remove("is-open");
     }
   });
-  //добавление  товара в корзину через localeStorage
+ 
 };
 cart();
