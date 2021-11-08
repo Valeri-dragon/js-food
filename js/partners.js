@@ -1,15 +1,18 @@
 const partners = () => {
   const cardsRestaurants = document.querySelector(".cards-restaurants");
+  const modalAuth = document.querySelector(".modal-auth");
+  const login = () => {
+    modalAuth.style.display = "flex";
+  };
 
-
-const renderItems = (data) => {
-
-  data.forEach(
-    (elem) => {
-      const { image, kitchen, name, price, products, stars, time_of_delivery } = elem;
+  const renderItems = (data) => {
+    
+    data.forEach((elem) => {
+      const { image, kitchen, name, price, products, stars, time_of_delivery } =
+        elem;
       const a = document.createElement("a");
 
-      a.setAttribute("href", "./restaurant.html");
+      a.setAttribute("href", "/restaurant.html");
       a.classList.add("card");
       a.classList.add("card-restaurant");
 
@@ -32,26 +35,27 @@ const renderItems = (data) => {
         <div class="category">${kitchen}</div>
         </div>
      </div>`;
-a.addEventListener("click", (e)=> {
-e.preventDefault();
-
-localStorage.setItem('restaurant', JSON.stringify(elem));
-window.location.href = './restaurant.html';
-})
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (JSON.parse(localStorage.getItem("user"))) {
+          localStorage.setItem("restaurant", JSON.stringify(elem));
+          window.location.href = "/restaurant.html";
+        } else {
+          login();
+        }
+      });
       cardsRestaurants.append(a);
-})
-};
+    });
+  };
 
-fetch("https://jsfood-c82ac-default-rtdb.firebaseio.com/db/partners.json")
-  .then((response) => response.json())
-  .then((data) => {
+  fetch("https://jsfood-c82ac-default-rtdb.firebaseio.com/db/partners.json")
+    .then((response) => response.json())
+    .then((data) => {
+     
+      renderItems(data);
+    }) 
+ 
+    .catch((error) => {});
   
-    renderItems(data);
-  }) 
-
-
-  .catch((error) => {});
-
-
 };
 partners();

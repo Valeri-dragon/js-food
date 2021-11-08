@@ -15,7 +15,7 @@ const cart = () => {
     const cartArray = JSON.parse(localStorage.getItem("cart"));
 
     cartArray.map((item) => {
-  
+      
       if (item.id === id) {
         item.count++;
       }
@@ -99,6 +99,6 @@ const cart = () => {
       modalCart.classList.remove("is-open");
     }
   });
- 
+  
 };
 cart();

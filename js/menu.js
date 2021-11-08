@@ -6,7 +6,7 @@ const menu = () => {
    [];
 
   const changeTitle = (restaurant) => {
-
+   
     const { name, price, kitchen, stars } = restaurant;
     const restaurantTitle = document.querySelector(".restaurant-title");
     const sectionHeading = document.querySelector(".section-heading");
@@ -20,7 +20,7 @@ const menu = () => {
           `;
     sectionHeading.append(infoCard);
   };
- 
+  
   const addToCart = (cartItem) => {
     if(cartArray.some((item) =>  item.id === cartItem.id)){
 

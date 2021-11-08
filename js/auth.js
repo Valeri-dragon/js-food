@@ -26,6 +26,7 @@ const auth = () => {
     buttonAuth.style.display = "flex";
 
     localStorage.removeItem("user");
+    window.location.href = "/";
   };
 
   buttonAuth.addEventListener("click", () => {
@@ -43,17 +44,24 @@ const auth = () => {
       login: inputLogin.value,
       password: inputPassword.value,
     };
-    let newSpan = document.querySelector(".error");
+    
 
-    if (user.login == "") {
-      newSpan.innerHTML = "Заполните поле";
-    } else {
-      newSpan = "";
+    if (user.login == "" ) {
+      inputLogin.placeholder = "Введите ваш логин";
+      inputLogin.style.border= "1px solid red"
+      inputPassword.style.border = '1px solid black'
+    } else if(user.password == ''){
+      inputPassword.placeholder = " Введите ваш пароль"
+      inputPassword.style.border= "1px solid red"
+      inputLogin.style.border = '1px solid black'
+    }
+    else {
+     
       localStorage.setItem("user", JSON.stringify(user));
       login(user);
     }
 
-  
+    
   });
   buttonOut.addEventListener("click", logOut);
   if (localStorage.getItem("user")) {
