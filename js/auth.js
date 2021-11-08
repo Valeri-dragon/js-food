@@ -53,14 +53,7 @@ const auth = () => {
       login(user);
     }
 
-    /* for (let elem of logInForm.elements) {
-    if (elem.tagName === "INPUT" && !elem.classList.contains("button-login")) {
-      console.log(elem.value);
-      const user = {
-          elem
-      }
-    }
-  }*/
+  
   });
   buttonOut.addEventListener("click", logOut);
   if (localStorage.getItem("user")) {
