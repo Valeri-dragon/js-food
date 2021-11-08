@@ -26,7 +26,7 @@ const auth = () => {
     buttonAuth.style.display = "flex";
 
     localStorage.removeItem("user");
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
   };
 
   buttonAuth.addEventListener("click", () => {
