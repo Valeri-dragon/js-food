@@ -1,15 +1,12 @@
 const menu = () => {
   const cardsMenu = document.querySelector(".cards-menu");
-/*когда будет объявляться переменная cartArray,
-будет проверяться localStorage на присутствие ключа cart 
-и если он есть мы положим в переменную все, что находится в 
-localStorage, в  ином случае мы создадим пустой массив*/
+
   const cartArray = localStorage.getItem('cart')?
    JSON.parse(localStorage.getItem('cart')):
    [];
 
   const changeTitle = (restaurant) => {
-    //console.log(restaurant);
+
     const { name, price, kitchen, stars } = restaurant;
     const restaurantTitle = document.querySelector(".restaurant-title");
     const sectionHeading = document.querySelector(".section-heading");
@@ -23,9 +20,7 @@ localStorage, в  ином случае мы создадим пустой ма�
           `;
     sectionHeading.append(infoCard);
   };
-  /*функция добавления в корзину*/
-  /*cartItem здесь объект, который получили при клике на кнопку в корзину на
-  карточке товара*/
+ 
   const addToCart = (cartItem) => {
     if(cartArray.some((item) =>  item.id === cartItem.id)){
 
@@ -46,7 +41,7 @@ localStorage, в  ином случае мы создадим пустой ма�
     localStorage.setItem('cart', JSON.stringify(cartArray))
 
   }
-/*конец добавления в корзину*/
+
   const renderItems = (data) => {
     data.forEach(({ description, id, image, name, price }) => {
       const divCard = document.createElement("div");
@@ -81,7 +76,7 @@ localStorage, в  ином случае мы создадим пустой ма�
    const cartItem = {
      name: name,
      price: price,
-     id:id, //добавили для правильного подсчета в корзине
+     id:id, 
      count: 1
    }
    addToCart(cartItem);
@@ -90,14 +85,14 @@ localStorage, в  ином случае мы создадим пустой ма�
       cardsMenu.append(divCard);
     });
   };
-  //console.log(localStorage.getItem('restaurant'))
+  
   if (localStorage.getItem("restaurant")) {
     const restaurant = JSON.parse(localStorage.getItem("restaurant"));
     changeTitle(restaurant);
 
     fetch(
       `./db/${restaurant.products}`
-    ) /*в обратных кавычкач мы можем исопльзовать js код*/
+    ) 
       .then((response) => response.json())
       .then((data) => {
         renderItems(data);
