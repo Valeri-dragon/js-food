@@ -7,7 +7,7 @@ const renderItems = (data) => {
       const { image, kitchen, name, price, products, stars, time_of_delivery } = elem;
       const a = document.createElement("a");
 
-      a.setAttribute("href", "/restaurant.html");
+      a.setAttribute("href", "./restaurant.html");
       a.classList.add("card");
       a.classList.add("card-restaurant");
 
@@ -34,7 +34,7 @@ a.addEventListener("click", (e)=> {
 e.preventDefault();
 
 localStorage.setItem('restaurant', JSON.stringify(elem));
-window.location.href = '/restaurant.html';
+window.location.href = './restaurant.html';
 })
       cardsRestaurants.append(a);
 })
