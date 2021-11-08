@@ -12,6 +12,16 @@ button {
   cursor: pointer;
   color: inherit;
 }
+.slider-buttons {
+   position: absolute;
+  bottom: 20%;
+  right: 3%;
+   width: 100px;
+   z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .error {
   display: block;
   width: 100%;
